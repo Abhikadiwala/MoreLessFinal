@@ -1,0 +1,67 @@
+changes on 12-05-2022
+
+1. Rename indexMain js and Html file ---------> index.js and index.html
+2. Rename index js and Html file -------------> level0.js and level0.html
+3. change reflect on every part where it is used
+
+
+Path changes of indexMain.html and indexMain.js
+
+1. indexMain.html which is now index.html
+
+
+-->> Pending Changes in Path changes
+
+-- level0 -- Done
+
+-- level1_Pre -- Done
+-- level1     -- Done
+
+-- level2_Pre -- Done
+-- level2     -- Done 
+
+-- level3_Pre -- Done
+-- level3     -- Done 
+
+-- level4_Pre -- Done
+-- level4     -- Done
+
+-- HomeBtnIndex -- Done
+-- HomeBtnPage  -- Done
+-- SkipBtnPage  -- Done
+
+--------------------------------------------------------------------------------------------
+Facing Issues in Testing 
+
+1. windows
+-- Sometime Take a more Load for Images
+-- Taking Time on Page Changes
+-- Backgroud image not load sometimes due to load on network
+-- audios and images are not load on time
+
+
+--------- Game Link 7-april:- https://dmy3rhlccp2sy.cloudfront.net
+
+
+---------------------------------------------------------------------------------------------
+Kreedo changes after 16-05-2022 Meeting
+
+1. Change Full screen mode
+2. Remove let's play button
+3. Progress -- When user come back audio should be auto play
+4. Progress -- pause screen execution when screen not visible
+5. Progress -- onreload audio should be work
+
+Current Issues:- 1. when BG audio is muted then presentation not reload.
+                 2. When use come re-back to game then game is not staring directly
+
+                 
+----------------------------------------------------------------------------------------------
+Pending Works in Kreedo Game ----  18-05-2022
+
+1. L1_Pre -- if Mute then not going to refresh -- complete
+2. L2_Pre -- if Mute then not going to refresh -- complete
+3. L3_Pre -- if Mute then not going to refresh -- complete
+4. L4_Pre -- if Mute then not going to refresh -- complete
+
+5. level3 -- after completion on level reward point not showing -- sometimes not load

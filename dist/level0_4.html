@@ -1,0 +1,150 @@
+<style>
+    html,
+    body {
+        height: 100%;
+        background: #f6f7fd;
+        font-size: 16px;
+        overflow: auto;
+    }
+
+    .snippet {
+        position: relative;
+        background: #fff;
+        padding: 2rem 5%;
+        margin: 1.5rem 0;
+        box-shadow: 0 .4rem .8rem -.1rem rgba(0, 32, 128, .1), 0 0 0 1px #f0f2f7;
+        border-radius: .25rem;
+    }
+
+    .examples .snippet:before {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 5px;
+        content: attr(data-title);
+        font-size: .75rem;
+        font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        color: white;
+        background-color: rgb(255, 25, 100);
+        border-radius: .25rem 0 .25rem 0;
+    }
+
+    .stage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 2rem 0;
+        margin: 0 -5%;
+        overflow: hidden;
+    }
+
+    .filter-contrast {
+        filter: contrast(5);
+        background-color: white;
+    }
+
+
+    /**
+ * ==============================================
+ * Dot Pulse
+ * ==============================================
+ */
+    .dot-pulse {
+        position: relative;
+        left: -9999px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: #9880ff;
+        color: #9880ff;
+        box-shadow: 9999px 0 0 -5px #9880ff;
+        animation: dotPulse 1.5s infinite linear;
+        animation-delay: .25s;
+    }
+
+    .dot-pulse::before,
+    .dot-pulse::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: #9880ff;
+        color: #9880ff;
+    }
+
+    .dot-pulse::before {
+        box-shadow: 9984px 0 0 -5px #9880ff;
+        animation: dotPulseBefore 1.5s infinite linear;
+        animation-delay: 0s;
+    }
+
+    .dot-pulse::after {
+        box-shadow: 10014px 0 0 -5px #9880ff;
+        animation: dotPulseAfter 1.5s infinite linear;
+        animation-delay: .5s;
+    }
+
+    @keyframes dotPulseBefore {
+        0% {
+            box-shadow: 9984px 0 0 -5px #9880ff;
+        }
+
+        30% {
+            box-shadow: 9984px 0 0 2px #9880ff;
+        }
+
+        60%,
+        100% {
+            box-shadow: 9984px 0 0 -5px #9880ff;
+        }
+    }
+
+    @keyframes dotPulse {
+        0% {
+            box-shadow: 9999px 0 0 -5px #9880ff;
+        }
+
+        30% {
+            box-shadow: 9999px 0 0 2px #9880ff;
+        }
+
+        60%,
+        100% {
+            box-shadow: 9999px 0 0 -5px #9880ff;
+        }
+    }
+
+    @keyframes dotPulseAfter {
+        0% {
+            box-shadow: 10014px 0 0 -5px #9880ff;
+        }
+
+        30% {
+            box-shadow: 10014px 0 0 2px #9880ff;
+        }
+
+        60%,
+        100% {
+            box-shadow: 10014px 0 0 -5px #9880ff;
+        }
+    }
+</style>
+
+<main>
+    <div class="container">
+        <div class="row examples">
+            <div class="col-3">
+                <!-- <div class="snippet" data-title=".dot-pulse"> -->
+                <div class="snippet">
+                    <div class="stage">
+                        <div class="dot-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>

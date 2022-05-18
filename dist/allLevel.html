@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- For stop Zoom -->
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation</title>
+  <style>
+    /* @media screen and (orientation:landscape) { */
+    * {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      /*  Hide scrollbars */
+    }
+
+    /* .c {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;   // Hide Scroll bar
+            
+        }   */
+
+    #loading {
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      position: fixed;
+      display: block;
+
+    }
+
+    #loading-text {
+      position: center;
+      font-size: medium;
+      margin-top: 22%;
+      margin-left: 45%;
+      z-index: 100
+    }
+
+    @media only screen and (orientation:portrait) {
+      body {
+        margin: 0;
+        padding: 0;
+        transform: rotate(90deg);
+        overflow: hidden;
+        /*  Hide scrollbars */
+        /* background-image: url('./asset/Backgound.png'); */
+      }
+    }
+
+    /* } */
+  </style>
+
+</head>
+
+<body>
+  <div id="loading">
+    <!-- <img id="loading-image" src="../img/loading.gif" alt="Loading..." /> -->
+    <!-- <img id="loading-image" src="../asset/logo/loader.png" alt="Loading..." /> -->
+    <h1 id="loading-text">Loading.....</h1>
+  </div>
+
+  <canvas class="AllLevel" id="AllLevel">
+    <canvas class="homepopup" id="homepopup">
+      <!-- <canvas id="pimg"></canvas> -->
+
+      <script src="./three.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/three@0.138.2/build/three.min.js"></script> -->
+      <!-- <div id='container'></div> -->
+
+      <!-- <script  type="module"> -->
+      <!-- <script src="./js/index.js" type="module"> -->
+      <!-- <script src="./js/indexMain.js" type="module"></script> -->
+
+      <!-- --------------  Working     -------------------->
+      <script src="./js/allLevel.js" type="module"></script>
+      <!-- ------------------------------------------------->
+
+      <!-- <script src="./js/index2.js" type="module"></script> -->
+
+      <!-- <script src='https://rawgit.com/jeromeetienne/threex.domevents/master/examples/vendor/three.js/build/three.min.js'></script> -->
+
+      <!-- import Threex Here -->
+      <!-- <script src='https://rawgit.com/jeromeetienne/threex.domevents/master/threex.domevents.js'></script> -->
+      <script src='threex.domevents.js'></script>
+
+      <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
+
+      <!-- <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+            <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script> -->
+    </canvas>
+
+</body>
+
+</html>
