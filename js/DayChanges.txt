@@ -65,3 +65,13 @@ Pending Works in Kreedo Game ----  18-05-2022
 4. L4_Pre -- if Mute then not going to refresh -- complete
 
 5. level3 -- after completion on level reward point not showing -- sometimes not load
+
+
+-------------------------------------------------------------------------------------------
+Changes on 19-05-2022
+
+1. Add Back Btn Hander Page -----------  Left:- Green(Previous_Level)  , Right:- Blue(continue_game) 
+// Do not do anything in this issue take a confirmation from client
+// issue:- requirement sheet -- level1 -- 30 -- showing gl_a_2 audio
+
+// audio showing:- left-green(continue), right-blue(previous)

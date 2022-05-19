@@ -1430,6 +1430,8 @@ function headerBack() {
       domEvents.addEventListener(planeBack, 'click', function (event) {
         console.log("Back Btn Press")
 
+        sessionStorage.setItem('backBtnClick', 21) // 21 --> level2 Presentation
+
         // Push to Level 1
         // window.location.href = "/level1.html"
         // window.location.assign("level1.html");
@@ -1440,11 +1442,13 @@ function headerBack() {
           console.log("Redirect New Page");
           console.log("endPoint", endPoint);
           // location.href = "/level1.html"
-          window.location.replace(`level1.html`);
+          // window.location.replace(`level1.html`); // last active
+          window.location.replace(`backBtnPage.html`); // Back Btn Page
 
         } else {
           // location.href = "/level1.html"
-          window.location.replace(`level1.html`);
+          // window.location.replace(`level1.html`); // last active
+          window.location.replace(`backBtnPage.html`); // Back Btn Page
 
         }
       })

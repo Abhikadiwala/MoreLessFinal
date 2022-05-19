@@ -1420,6 +1420,8 @@ function headerBack() {
             domEvents.addEventListener(planeBack, 'click', function (event) {
                 console.log("Back Btn Press")
 
+                sessionStorage.setItem('backBtnClick', 11)  // 11 --> Level1 Presentation
+
                 // Push to Level 1 Presentation
                 // window.location.href = "/level1_Pre.html"
                 var currentPath = `${endPoint}/level1_Pre.html`
@@ -1430,14 +1432,16 @@ function headerBack() {
                     // location.href = "/level1_Pre.html"
                     // window.location.replace(`${endPoint}/level1_Pre.html`); // Active
                     // window.location.replace(`${endPoint}/index.html`); // Active path change
-                    window.location.replace(`level0.html`); // Active
+                    // window.location.replace(`level0.html`); // last Active
+                    window.location.replace(`backBtnPage.html`); // Back Btn Page
                     // window.location.replace(`${endPoint}/level1Testing.html`); // Testing
 
                 } else {
                     // location.href = "/level1_Pre.html"
                     // window.location.replace(`${endPoint}/level1_Pre.html`);  // Active
                     // window.location.replace(`${endPoint}/index.html`); // Active path change
-                    window.location.replace(`level0.html`);  // Active
+                    // window.location.replace(`level0.html`);  // last Active
+                    window.location.replace(`backBtnPage.html`); // Back Btn Page
                     // window.location.replace(`${endPoint}/level1Testing.html`); // Testing
 
                 }

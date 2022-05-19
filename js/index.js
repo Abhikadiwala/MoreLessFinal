@@ -10,6 +10,7 @@ localStorage.clear()   // -- Uncomment if always want fresh start
 var setItemLocal
 
 setItemLocal = localStorage.setItem('level0', true)
+sessionStorage.setItem('backBtnClick', 0)
 
 // localStorage.setItem('level0', false)
 // localStorage.setItem('level1', false)

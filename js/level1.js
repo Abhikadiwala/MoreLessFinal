@@ -1712,6 +1712,7 @@ function headerBack() {
       const domEvents = new THREEx.DomEvents(camera, renderer.domElement)
       domEvents.addEventListener(planeBack, 'click', function (event) {
         console.log("Back Btn Press")
+        sessionStorage.setItem('backBtnClick', 1)
 
         // location.Back()
         // history.back()
@@ -1726,7 +1727,8 @@ function headerBack() {
           // document.location.href = '/level1.html'
           // window.location.replace(`${endPoint}/level1.html`); // Active
           // window.location.replace(`${endPoint}/index.html`); // path change
-          window.location.replace(`level0.html`); // path change
+          // window.location.replace(`level0.html`); // path change - last active
+          window.location.replace(`backBtnPage.html`); // Back Btn Page
           // window.location.replace(`/level1Testing.html`);  // Testing
 
 
@@ -1735,7 +1737,8 @@ function headerBack() {
           // document.location.href = '/level1.html'
           // window.location.replace(`${endPoint}/level1.html`); // Active
           // window.location.replace(`${endPoint}/index.html`); // path change
-          window.location.replace(`level0.html`); // path change
+          // window.location.replace(`level0.html`); // path change - Last active
+          window.location.replace(`backBtnPage.html`); // path change
           // window.location.replace(`/level1Testing.html`);  // Testing
 
 

@@ -1189,6 +1189,8 @@ function headerBack() {
       domEvents.addEventListener(planeBack, 'click', function (event) {
         console.log("Back Btn Press")
 
+        sessionStorage.setItem('backBtnClick', 2)
+
         // location.Back()
         // history.back()
         // history.go(-1)
@@ -1202,11 +1204,13 @@ function headerBack() {
           console.log("Redirect New Page");
           console.log("endPoint", endPoint);
           // location.href = '/level1.html'
-          window.location.replace(`level1.html`);  // Active
+          // window.location.replace(`level1.html`);  // lastActive
+          window.location.replace(`backBtnPage.html`); // Back Btn Page
           // window.location.replace(`/level1Testing.html`);  // Testing
         } else {
           // location.href = '/level1.html'
-          window.location.replace(`level1.html`); // Active
+          // window.location.replace(`level1.html`); // last Active
+          window.location.replace(`backBtnPage.html`); // Back Btn Page
           // window.location.replace(`/level1Testing.html`);  // Testing
         }
 
@@ -5134,7 +5138,6 @@ function RewardShow() {
     startVelocity: 45,
   });
   //  --------------------------------------------------------------------------------
-
 }
 
 // Function For Display Canvas

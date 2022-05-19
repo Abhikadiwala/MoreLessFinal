@@ -1555,6 +1555,8 @@ function headerBack() {
       domEvents.addEventListener(planeBack, 'click', function (event) {
         console.log("Back Btn Press")
 
+        sessionStorage.setItem('backBtnClick', 31) // 31 --> Level3 Presentation
+
         // Push to Level 1 Presentation
         // window.location.href = "/level2.html"
 
@@ -1564,10 +1566,12 @@ function headerBack() {
           console.log("Redirect New Page")
           console.log("endPoint", endPoint)
           // location.href = '/level2.html'
-          window.location.replace(`level2.html`);
+          // window.location.replace(`level2.html`); // last active
+          window.location.replace(`backBtnPage.html`); // Back Btn Page
         } else {
           // location.href = '/level2.html'
-          window.location.replace(`level2.html`);
+          // window.location.replace(`level2.html`); // last active
+          window.location.replace(`backBtnPage.html`); // Back Btn Page
         }
       })
 
