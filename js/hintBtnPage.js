@@ -1,8 +1,8 @@
 
 // import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.124/examples/jsm/controls/OrbitControls.js'; 
 // import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
-console.log("Back Page Btn Working");
-console.log("New 10/05")
+console.log("Hint Page Btn Working");
+console.log("New 25/05")
 
 
 // Loader When Page is Load
@@ -14,7 +14,7 @@ window.onload = function () { document.getElementById("loading").style.display =
 
 // Access Canvas From index.html File
 // const canvas = document.querySelector('.skipBtnPage');
-const canvas = document.querySelector('.backBtnPage');
+const canvas = document.querySelector('.hintBtnPage');
 
 
 
@@ -90,7 +90,8 @@ var let_play = "asset/Let's_play.png"
 var ContinueBtnImg = "asset/logo/Continue_Green.png"
 // var ContinueBtnImg = "asset/logo/Continue game.png"
 // var playPreviousBtn = "asset/logo/Previous level.png"
-var playPreviousBtn = "asset/logo/previous level blue.png"
+// var playPreviousBtn = "asset/logo/previous level blue.png"
+var exitBtn = "asset/logo/exit blue.png"
 //  ---------------------------------------------------------------------------------
 
 // All Sounds
@@ -98,7 +99,8 @@ var playPreviousBtn = "asset/logo/previous level blue.png"
 var Audio1 = 'Sounds/level0_sounds/ML_A_L0_1.mp3'
 
 // var Audio_GL_17 = "Sounds/Global_Music/GL_A_17.mp3"
-var Audio_GL_2 = "Sounds/Global_Music/GL_A_2.mp3"
+// var Audio_GL_2 = "Sounds/Global_Music/GL_A_2.mp3"
+var Audio_GL_7 = "Sounds/Global_Music/GL_A_7.mp3"
 
 //  ---------------------------------------------------------------------------------
 
@@ -438,7 +440,8 @@ function homePageHandler() {
   // playAudio("../Sounds/Global_Music/GL_A_5_Home.mp3")
   // playAudio("../Sounds/Global_Music/GL_A_17.mp3") // Active- working
   // playAudio(Audio_GL_17)
-  playAudio(Audio_GL_2)
+  // playAudio(Audio_GL_2)
+  playAudio(Audio_GL_7)
 
   //  ------------------------  Working  --------------------------
   // Inner Function Change Image onClick         
@@ -492,7 +495,8 @@ function homePageHandler() {
         // console.log("------------------- referrer", document.referrer)
         // -----------------------------------------------------------------------------------------------
         // var lastLevelStr = sessionStorage.getItem('skipClick')
-        var lastLevelStr = sessionStorage.getItem('backBtnClick')
+        // var lastLevelStr = sessionStorage.getItem('backBtnClick')
+        var lastLevelStr = sessionStorage.getItem('hintClick')
         var lastLevel = Number(lastLevelStr)
         console.log(lastLevel)
 
@@ -521,30 +525,33 @@ function homePageHandler() {
         // }
 
         switch (lastLevel) {
+          // case 1:
+          //   window.location.replace(`level1.html`);
+          //   break;
           case 1:
-            window.location.replace(`level1.html`);
-            break;
-          case 11:
+            // case 11:
             window.location.replace(`level1_Pre.html`);
             break;
+          // case 2:
+          //   window.location.replace(`level2.html`);
+          //   break;
           case 2:
-            window.location.replace(`level2.html`);
-            break;
-          case 21:
+            // case 21:
             window.location.replace(`level2_Pre.html`);
             break;
+          // case 3:
+          //   window.location.replace(`level3.html`);
+          //   break;
           case 3:
-            window.location.replace(`level3.html`);
-            break;
-          case 31:
+            // case 31:
             window.location.replace(`level3_Pre.html`);
             break;
-          case 4:
-            window.location.replace(`level4.html`);
-            break;
-          case 41:
-            window.location.replace(`level4_Pre.html`);
-            break;
+          // case 4:
+          //   window.location.replace(`level4.html`);
+          //   break;
+          // case 41:
+          //   window.location.replace(`level4_Pre.html`);
+          //   break;
 
           default:
             window.location.replace(`index.html`)
@@ -632,7 +639,8 @@ function homePageHandler() {
     // "../asset/logo/Pick new game.png",
     // "../asset/logo/Pick_New_Game_Blue.png",
     // "../asset/logo/Play the next level.png",
-    playPreviousBtn,
+    // playPreviousBtn,
+    exitBtn,
 
     function (textureintroMoreRHS) {
       var planeMaterialintroMoreRHS = new THREE.MeshBasicMaterial({
@@ -643,7 +651,8 @@ function homePageHandler() {
       //Create a 2x2 plane with texture
       // var planeGeometryintroMoreRHS = new THREE.PlaneBufferGeometry(0.95, 0.95);
       // var planeGeometryintroMoreRHS = new THREE.PlaneBufferGeometry(1.1, 0.9); // active
-      var planeGeometryintroMoreRHS = new THREE.PlaneBufferGeometry(1.2, 0.85);
+      // var planeGeometryintroMoreRHS = new THREE.PlaneBufferGeometry(1.2, 0.85);
+      var planeGeometryintroMoreRHS = new THREE.PlaneBufferGeometry(0.85, 0.85);
       planeLZCRHS = new THREE.Mesh(planeGeometryintroMoreRHS, planeMaterialintroMoreRHS);
       scene.add(planeLZCRHS);
       planeLZCRHS.position.x = 1
@@ -691,7 +700,8 @@ function homePageHandler() {
 
         // -----------------------------------------------------------------------------------------------
         // var lastLevelStr = sessionStorage.getItem('skipClick')
-        var lastLevelStr = sessionStorage.getItem('backBtnClick')
+        // var lastLevelStr = sessionStorage.getItem('backBtnClick')
+        var lastLevelStr = sessionStorage.getItem('hintClick')
         var lastLevel = Number(lastLevelStr)
         console.log(lastLevel)
 
@@ -721,29 +731,29 @@ function homePageHandler() {
 
         switch (lastLevel) {
           case 1:
-            window.location.replace(`level0.html`);
+            window.location.replace(`level1.html`);
             break;
-          case 11:
-            window.location.replace(`level0.html`);
-            break;
+          // case 11:
+          //   window.location.replace(`level0.html`);
+          //   break;
           case 2:
-            window.location.replace(`level1.html`);
+            window.location.replace(`level2.html`);
             break;
-          case 21:
-            window.location.replace(`level1.html`);
-            break;
+          // case 21:
+          //   window.location.replace(`level1.html`);
+          //   break;
           case 3:
-            window.location.replace(`level2.html`);
-            break;
-          case 31:
-            window.location.replace(`level2.html`);
-            break;
-          case 4:
             window.location.replace(`level3.html`);
             break;
-          case 41:
-            window.location.replace(`level3.html`);
-            break;
+          // case 31:
+          //   window.location.replace(`level2.html`);
+          //   break;
+          // case 4:
+          //   window.location.replace(`level3.html`);
+          //   break;
+          // case 41:
+          //   window.location.replace(`level3.html`);
+          //   break;
 
           default:
             window.location.replace(`index.html`)

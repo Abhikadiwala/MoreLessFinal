@@ -75,3 +75,18 @@ Changes on 19-05-2022
 // issue:- requirement sheet -- level1 -- 30 -- showing gl_a_2 audio
 
 // audio showing:- left-green(continue), right-blue(previous)
+
+
+--------------------------------------------------------------------------------------------
+Final Posible Changes --- level 4 changes Pending due to don't know flow of game
+
+-- Review - 3 Audio icon show from start of level ---- complete
+-- Review - 43 Audio ML_A_L0_3 Inserted ---- complete
+-- Review - 46 Work in Progress (Add Audio) ---- Not Posible 3 Audios are comming at a time(tried in level 1 set-1 but not looking good)
+
+-- [ Review - 47 Work in Progress (Add exit and continue btn on hint and skip btn)    
+   **left side :- continue Btn (green)
+   **right side :- exit (blue) ] ---- complete
+
+-- Review - 48 Audio level complete audio ---- complete
+-- Review - 51 Audio instruction pause on set-changed  ---- Complete

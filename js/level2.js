@@ -378,6 +378,8 @@ var tryAgainSound = 'Sounds/Global_Music/GL_A_20.mp3'
 
 var Audio_GL_A_5 = 'Sounds/Global_Music/GL_A_5.mp3'
 
+var Audio_Level_Complete = 'Sounds/Global_Music/Level Completion Audio.mp3'
+
 // Sound for right ans
 var right_ans_sound = 'Sounds/Global_Music/Music/For correct answer.mp3'
 
@@ -450,7 +452,7 @@ var isPlayAgain = false, SCom = true, isAudio10Com = false, AnsS2Cor = false
 //Check Image Status
 var musicImgStatus = true, replyAudioBtnSound, isAudiReplyplay = false, planeReplyAudio
 
-var newrewardPoints, getNewRewardPoints, getRewardData, getRewardString, finalReward, meshText
+var newrewardPoints, getNewRewardPoints, getRewardData, getRewardString, finalReward, meshText, isReplyBtnClick = false
 
 // Global x,y Size For Slide Rounds
 // SXIPosLHS = Slide X Image Position   LHS
@@ -1061,6 +1063,30 @@ function LevelCompleteSound(path) {
   }, false);
 }
 
+// For Level Complete Audio
+// Play Reply Audio and Pause playAudio Function sound here
+function LevelCompleteSound2(path) {
+
+  // Audio Listener Object
+  // var listener3 = new THREE.AudioListener();
+  var listener4 = new THREE.AudioListener();
+
+  // create the PositionalAudio object (passing in the listener)
+  // var replyAudioSound = new THREE.PositionalAudio(listener3);
+  var replyAudioSound2 = new THREE.PositionalAudio(listener4);
+
+  // load a sound and set it as the PositionalAudio object's buffer
+  // var audioLoader3 = new THREE.AudioLoader();
+  var audioLoader4 = new THREE.AudioLoader();
+  audioLoader4.load(path, function (buffer) {
+
+    replyAudioSound2.setBuffer(buffer);
+    replyAudioSound2.setRefDistance(20);
+    replyAudioSound2.play();
+
+  }, false);
+}
+
 // -------------------------     NavBar All Icons   ------------------------------------
 
 // All Header Components Add Here
@@ -1526,6 +1552,38 @@ function RewardPoints(rewards) {
 
 // -------------------------------------------------------------------------------------
 
+// Tru again audio
+// For Level Complete Audio
+// Play Reply Audio and Pause playAudio Function sound here
+function tryAgainSoundFunc(path) {
+  // console.clear()
+
+
+  // Audio Listener Object
+  // var listener5 = new THREE.AudioListener();
+  var listener6 = new THREE.AudioListener();
+
+
+  // create the PositionalAudio object (passing in the listener)
+  // var replyAudioSound = new THREE.PositionalAudio(listener3);
+  // var replyAudioSound3 = new THREE.PositionalAudio(listener5);
+  var replyAudioSound3 = new THREE.PositionalAudio(listener6);
+
+  // load a sound and set it as the PositionalAudio object's buffer
+  // var audioLoader3 = new THREE.AudioLoader();
+  var audioLoader5 = new THREE.AudioLoader();
+  // console.log("audioLoader :-", audioLoader)
+  // console.log("audioLoader Start :-", audioLoader.manager.itemStart);
+  // console.log("audioLoader End :-", audioLoader.manager.itemEnd);
+  audioLoader5.load(path, function (buffer) {
+
+    replyAudioSound3.setBuffer(buffer);
+    replyAudioSound3.setRefDistance(20);
+    // Sound Speed control here
+    replyAudioSound3.play();
+
+  }, false);
+}
 
 // ---------------------    Audio Reply Button -------------------------------------
 // Play Reply Audio and Pause playAudio Function sound here
@@ -2394,7 +2452,8 @@ function l2Slide1() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
               // Load RHS Image Here
               const loadS1LHS_Ans = new THREE.TextureLoader();
@@ -2467,6 +2526,19 @@ function l2Slide1() {
 // Indicate Bottel
 // LHS Correct
 function l2Slide2() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    // alert(`${replyAudioBtnSound.isPlaying}`)
+    // }
+    // if (AudioReplaySound.isPlaying() == true) {
+    //   if (isReplayAudioPlay == true) {
+    replyAudioBtnSound.disconnect()
+    //   } else {
+    //     replyAudioBtnSound.disconnect()
+    //   }
+    // }
+  }
 
   console.log("Slide 2 Function Working")
   // roundUpdate(2)
@@ -2644,7 +2716,8 @@ function l2Slide2() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
               // Load RHS Image Here
               const loadS2LHS_Ans = new THREE.TextureLoader();
@@ -2715,6 +2788,12 @@ function l2Slide2() {
 // Indicate Chair
 // LHS Correct
 function l2Slide3() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   // planeCorrectAnsS2.visible = false
   console.log("AnsS2Cor S3 Out", AnsS2Cor);
 
@@ -2900,7 +2979,8 @@ function l2Slide3() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
 
               // Load RHS Image Here
@@ -2973,6 +3053,12 @@ function l2Slide3() {
 // Indicate white Ball
 // RHS Correct
 function l2Slide4() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   console.log("Slide 4 Function Working")
   headerProgress(l2PS3)    // Change Progressbar Image
 
@@ -3156,7 +3242,8 @@ function l2Slide4() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
 
               // Load RHS Image Here
@@ -3228,6 +3315,12 @@ function l2Slide4() {
 // Indicate Balloons
 // LHS Correct
 function l2Slide5() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   console.log("Slide 5 Function Working")
   headerProgress(l2PS4)    // Change Progressbar Image
 
@@ -3417,7 +3510,8 @@ function l2Slide5() {
               // For InCorrect Answer
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
               // Load RHS Image Here
               const loadS5LHS_Ans = new THREE.TextureLoader();
@@ -3487,6 +3581,10 @@ function l2Slide5() {
 // Indicate Blue Pants
 // LHS Correct
 function l2Slide6() {
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
 
   console.log("Slide 6 Function Working")
   headerProgress(l2PS5)    // Change Progressbar Image
@@ -3683,7 +3781,8 @@ function l2Slide6() {
               // For InCorrect Answer
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
 
               // Load RHS Image Here
@@ -3751,6 +3850,11 @@ function l2Slide6() {
 // Indicate socks
 // RHS Correct
 function l2Slide7() {
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   console.log("Slide 7 Function Working")
   headerProgress(l2PS6)    // Change Progressbar Image
 
@@ -3946,7 +4050,8 @@ function l2Slide7() {
               // For InCorrect Answer
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
 
               // Load RHS Image Here
@@ -4014,6 +4119,11 @@ function l2Slide7() {
 // Indicate Pants
 // LHS Correct
 function l2Slide8() {
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   console.log("Slide 8 Function Working")
   headerProgress(l2PS7)    // Change Progressbar Image
 
@@ -4201,7 +4311,8 @@ function l2Slide8() {
               // For InCorrect Answer
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
 
               // Load RHS Image Here
@@ -4269,6 +4380,11 @@ function l2Slide8() {
 // Indicate White Ball
 // RHS Correct
 function l2Slide9() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
 
   console.log("Slide 9 Function Working")
   headerProgress(l2PS8)    // Change Progressbar Image
@@ -4457,7 +4573,8 @@ function l2Slide9() {
               // For InCorrect Answer
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
 
               // Load RHS Image Here
@@ -4524,6 +4641,10 @@ function l2Slide9() {
 // Indicate Shoes
 // RHS Correct
 function l2Slide10() {
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
 
   console.log("Slide 10 Function Working")
   headerProgress(l2PS9)    // Change Progressbar Image
@@ -4745,7 +4866,8 @@ function l2Slide10() {
               // For InCorrect Answer
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
 
               // Load RHS Image Here
@@ -4901,6 +5023,11 @@ function skiplevelBtn() {
 // Level 2 Complete
 function levelTwoComplete() {
 
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   scene.remove(planeReplyAudio)
   // AnsS10Cor = true 
   // console.log("Check the Ans10 Status---------------------", AnsS10Cor)
@@ -4909,6 +5036,7 @@ function levelTwoComplete() {
 
   // LevelCompleteSound('../Sounds/Global_Music/GL_A_5.mp3')
   LevelCompleteSound(Audio_GL_A_5)
+  LevelCompleteSound2(Audio_Level_Complete)
 
   // setInterval(() => {
   //   RewardShow()
@@ -5101,6 +5229,7 @@ function levelTwoComplete() {
   renderer.render(scene, camera);
   document.body.appendChild(renderer.domElement);
 }
+
 
 // Function For reward Show
 function RewardShow() {

@@ -1599,7 +1599,7 @@ function headerProgress() {
       var planeMaterialProgress = new THREE.MeshBasicMaterial({
         map: textureProgress,
         transparent: true,
-        // visible: false 
+        // visible: false
       });
       //Create a 0.30x0.30 plane with texture
       // var planeGeometryProgress = new THREE.PlaneBufferGeometry(2, 0.33);
@@ -1803,6 +1803,11 @@ function headerHint() {
         domEvents.addEventListener(planeHint, 'click', function (event) {
           console.log("Hint Active Button Click")
 
+
+          // store hint click in session
+          // sessionStorage.setItem('hintClick', 1)
+          sessionStorage.setItem('hintClick', 3)
+
           // window.location.href = '/level3_Pre.html'
           var currentPath = `${endPoint}/level3_Pre.html`
 
@@ -1810,11 +1815,13 @@ function headerHint() {
             console.log("Redirect New Page")
             console.log("endPoint", endPoint)
             // location.href = '/level3_Pre.html'
-            window.location.replace(`level3_Pre.html`);
+            // window.location.replace(`level3_Pre.html`); // active
+            window.location.replace(`hintBtnPage.html`);
 
           } else {
             // location.href = '/level3_Pre.html'
-            window.location.replace(`level3_Pre.html`);
+            // window.location.replace(`level3_Pre.html`);
+            window.location.replace(`hintBtnPage.html`);
 
           }
         })
@@ -2231,6 +2238,7 @@ function dotAnimation() {
 // Load Instructor-1
 function presentationOne() {
   // console.clear()
+  isFunc4Active = true
 
 
   // Load Instructor-1 At Center 
@@ -2296,6 +2304,7 @@ function presentationOne() {
 // Function for Render Instructor Slide-2
 // function renderInsTwo() {
 function presentationTwo() {
+  isFunc4Active = true
   console.clear()
 
   scene.remove(dot, dot2, dot3)
@@ -3921,7 +3930,11 @@ function l3PS6_Skip() {
         console.log("Skip btn Click")
         // window.location.href = '/level3.html'
 
-        var setItemLocal = localStorage.setItem('level3_Pre', true)
+        localStorage.setItem('level3_Pre', true)
+
+        // store hint click in session
+        // sessionStorage.setItem('skipClick', 1)
+        sessionStorage.setItem('hintClick', 3)
 
         var currentPath = `${endPoint}/level3_Pre.html`
         console.log("currentPath", currentPath);
@@ -3929,10 +3942,12 @@ function l3PS6_Skip() {
           console.log("Redirect New Page")
           console.log("endPoint", endPoint)
           // window.location.href = '/level3.html'
-          window.location.replace(`level3.html`);
+          // window.location.replace(`level3.html`); // active
+          window.location.replace(`hintBtnPage.html`);
         } else {
           // window.location.href = '/level3.html'
-          window.location.replace(`level3.html`);
+          // window.location.replace(`level3.html`);
+          window.location.replace(`hintBtnPage.html`);
 
         }
         // Play try Again Audio - incorrect
@@ -4036,6 +4051,7 @@ function init() {
     headerReward()
     // replyAudio()
     RewardPoints(getRewardData)
+    replyAudio()
   }
 
   // ------------------       Working       ---------------------------------

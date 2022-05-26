@@ -844,6 +844,9 @@ var tryAgainSound = 'Sounds/Global_Music/GL_A_20.mp3'
 
 var Audio_GL_A_5 = 'Sounds/Global_Music/GL_A_5.mp3'
 
+var Audio_Level_Complete = 'Sounds/Global_Music/Level Completion Audio.mp3'
+
+var Audio3 = 'Sounds/level1_sounds/ML_A_L1_3.mp3'
 
 // Music Btn
 var MusicMuteBtn = "asset/logo/Music_Mute.png"
@@ -929,7 +932,7 @@ var isPlayAgain = false, SCom = true, isAudio10Com = false, dblClick = false
 //Check Image Status
 var musicImgStatus = true, planeReplyAudio, isAudiReplyplay = false, replyAudioBtnSound
 
-var newrewardPoints, getNewRewardPoints, getRewardData, getRewardString, finalReward, meshText
+var newrewardPoints, getNewRewardPoints, getRewardData, getRewardString, finalReward, meshText, isReplyBtnClick = false
 
 // Global x,y Size For Slide Rounds
 // SXIPosLHS = Slide X Image Position   LHS
@@ -1364,6 +1367,38 @@ function soundBG(path) {
   }, false);
 }
 
+// Tru again audio
+// For Level Complete Audio
+// Play Reply Audio and Pause playAudio Function sound here
+function tryAgainSoundFunc(path) {
+  // console.clear()
+
+
+  // Audio Listener Object
+  // var listener5 = new THREE.AudioListener();
+  var listener6 = new THREE.AudioListener();
+
+
+  // create the PositionalAudio object (passing in the listener)
+  // var replyAudioSound = new THREE.PositionalAudio(listener3);
+  // var replyAudioSound3 = new THREE.PositionalAudio(listener5);
+  var replyAudioSound4 = new THREE.PositionalAudio(listener6);
+
+  // load a sound and set it as the PositionalAudio object's buffer
+  // var audioLoader3 = new THREE.AudioLoader();
+  var audioLoader5 = new THREE.AudioLoader();
+  // console.log("audioLoader :-", audioLoader)
+  // console.log("audioLoader Start :-", audioLoader.manager.itemStart);
+  // console.log("audioLoader End :-", audioLoader.manager.itemEnd);
+  audioLoader5.load(path, function (buffer) {
+
+    replyAudioSound4.setBuffer(buffer);
+    replyAudioSound4.setRefDistance(20);
+    // Sound Speed Control here
+    replyAudioSound4.play();
+
+  }, false);
+}
 
 // ---------------------    Audio Reply Button -------------------------------------
 // Play Reply Audio and Pause playAudio Function sound here
@@ -1533,6 +1568,10 @@ function replyAudio(path) {
             // playAudio(path)
             // soundAnsCheck(path)
 
+
+            // Make Btn true after click on it
+            isReplyBtnClick = true
+
           }
         })
       }
@@ -1579,6 +1618,54 @@ function LevelCompleteSound(path) {
     replyAudioSound.setRefDistance(20);
     // Sound Speed Control here
     replyAudioSound.play();
+
+  }, false);
+}
+
+// For Level Complete Audio
+// Play Reply Audio and Pause playAudio Function sound here
+function LevelCompleteSound2(path) {
+
+  // Audio Listener Object
+  // var listener3 = new THREE.AudioListener();
+  var listener4 = new THREE.AudioListener();
+
+  // create the PositionalAudio object (passing in the listener)
+  // var replyAudioSound = new THREE.PositionalAudio(listener3);
+  var replyAudioSound2 = new THREE.PositionalAudio(listener4);
+
+  // load a sound and set it as the PositionalAudio object's buffer
+  // var audioLoader3 = new THREE.AudioLoader();
+  var audioLoader4 = new THREE.AudioLoader();
+  audioLoader4.load(path, function (buffer) {
+
+    replyAudioSound2.setBuffer(buffer);
+    replyAudioSound2.setRefDistance(20);
+    replyAudioSound2.play();
+
+  }, false);
+}
+
+// For Level Complete Audio
+// Incorrect Audio Instruction Function sound here
+function InCorrectAudioIns(path) {
+
+  // Audio Listener Object
+  // var listener4 = new THREE.AudioListener();
+  var listener5 = new THREE.AudioListener();
+
+  // create the PositionalAudio object (passing in the listener)
+  // var replyAudioSound2 = new THREE.PositionalAudio(listener4);
+  var replyAudioSound3 = new THREE.PositionalAudio(listener5);
+
+  // load a sound and set it as the PositionalAudio object's buffer
+  // var audioLoader4 = new THREE.AudioLoader();
+  var audioLoader4 = new THREE.AudioLoader();
+  audioLoader4.load(path, function (buffer) {
+
+    replyAudioSound3.setBuffer(buffer);
+    replyAudioSound3.setRefDistance(20);
+    replyAudioSound3.play();
 
   }, false);
 }
@@ -1762,9 +1849,10 @@ function headerBack() {
 }
 
 // Function Progress Button
-// Make ProgressBar Dynamic with Every Function Call add Path to it 
+// Make ProgressBar Dynamic with Every Function Call add Path to it
 // Working
 function headerProgress(PIpath) {
+
   console.clear()
 
   // console.log("Function headerProgress");
@@ -2056,6 +2144,7 @@ function RewardPoints(rewards) {
 // Check Clicked Answer S1
 function AnswerCheckS1() {
   // console.log("Answer Check Function Working")
+  // replyAudioBtnSound.stop();
 
   planeCorrectAns.visible = false
   S1Cor = false
@@ -2812,8 +2901,9 @@ function l1Slide1() {
               // For InCorrect Answer
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
-              // soundAnsCheck(tryAgainSound)
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
+              // InCorrectAudioIns(Audio3) // active if client say
 
               // Load RHS Image Here
               const loadS1LHS_Ans = new THREE.TextureLoader();
@@ -3056,6 +3146,19 @@ function l1Slide1() {
 // Indicate Cap
 // RHS Correct
 function l1Slide2() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    // alert(`${replyAudioBtnSound.isPlaying}`)
+    // }
+    // if (AudioReplaySound.isPlaying() == true) {
+    //   if (isReplayAudioPlay == true) {
+    replyAudioBtnSound.disconnect()
+    //   } else {
+    //     replyAudioBtnSound.disconnect()
+    //   }
+    // }
+  }
   // scene.remove(meshText)
   // console.log("Slide 2 Function Working")
   // roundUpdate(2)
@@ -3155,7 +3258,8 @@ function l1Slide2() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
               // Load RHS Image Here
               const loadS2LHS_Ans = new THREE.TextureLoader();
@@ -3371,6 +3475,11 @@ function l1Slide2() {
 // Indicate Hat
 // LHS Correct
 function l1Slide3() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
   // console.log("Slide 3 Function Working")
   headerProgress(l1PS2)    // Change Progressbar Image
 
@@ -3453,7 +3562,8 @@ function l1Slide3() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
               // Load RHS Image Here
               const loadS3LHS_Ans = new THREE.TextureLoader();
@@ -3669,6 +3779,12 @@ function l1Slide3() {
 // Indicate Red Ball
 // RHS Correct
 function l1Slide4() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   // console.log("Slide 4 Function Working")
   headerProgress(l1PS3)    // Change Progressbar Image
 
@@ -3752,7 +3868,8 @@ function l1Slide4() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
               // Load RHS Image Here
               const loadS4LHS_Ans = new THREE.TextureLoader();
@@ -3964,6 +4081,12 @@ function l1Slide4() {
 // Indicate Balloons
 // LHS Correct
 function l1Slide5() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   // console.log("Slide 5 Function Working")
   headerProgress(l1PS4)    // Change Progressbar Image
 
@@ -4047,7 +4170,8 @@ function l1Slide5() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
               // Load RHS Image Here
               const loadS5LHS_Ans = new THREE.TextureLoader();
@@ -4260,6 +4384,12 @@ function l1Slide5() {
 // Indicate Goggles
 // LHS Correct
 function l1Slide6() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   // console.log("Slide 6 Function Working")
   headerProgress(l1PS5)    // Change Progressbar Image
 
@@ -4344,7 +4474,9 @@ function l1Slide6() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
+
 
               // Load RHS Image Here
               const loadS6LHS_Ans = new THREE.TextureLoader();
@@ -4555,6 +4687,12 @@ function l1Slide6() {
 // Indicate Pink Balls
 // LHS Correct
 function l1Slide7() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   // console.log("Slide 7 Function Working")
   headerProgress(l1PS6)    // Change Progressbar Image
 
@@ -4639,7 +4777,8 @@ function l1Slide7() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
               // Load RHS Image Here
               const loadS7LHS_Ans = new THREE.TextureLoader();
@@ -4852,6 +4991,11 @@ function l1Slide7() {
 // Indicate Pants
 // RHS Correct
 function l1Slide8() {
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   // console.log("Slide 8 Function Working")
   headerProgress(l1PS7)    // Change Progressbar Image
 
@@ -4934,7 +5078,8 @@ function l1Slide8() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
               // Load RHS Image Here
               const loadS8LHS_Ans = new THREE.TextureLoader();
@@ -5146,6 +5291,12 @@ function l1Slide8() {
 // Indicate Bats
 // RHS Correct
 function l1Slide9() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   // console.log("Slide 9 Function Working")
   headerProgress(l1PS8)    // Change Progressbar Image
 
@@ -5228,7 +5379,8 @@ function l1Slide9() {
               // soundAnsCheck('../Sounds/Global_Music/Music/For the wrong answer.mp3')
               soundAnsCheck(wrong_ans_sound)
               // conditions('Wrong')
-              soundReplyAudio(tryAgainSound)
+              // soundReplyAudio(tryAgainSound)
+              tryAgainSoundFunc(tryAgainSound)
 
               // Load RHS Image Here
               const loadS9LHS_Ans = new THREE.TextureLoader();
@@ -5439,6 +5591,12 @@ function l1Slide9() {
 // Indicate Shoes
 // RHS Correct
 function l1Slide10() {
+
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   // console.log("Slide 10 Function Working")
   headerProgress(l1PS9)    // Change Progressbar Image
 
@@ -5806,12 +5964,18 @@ function skiplevelBtn() {
 // Funcyion Call After Level 1 Complete
 // Level 1 Complete
 function levelOneComplete() {
+  if (isReplyBtnClick == true) {
+    isReplyBtnClick = false
+    replyAudioBtnSound.disconnect()
+  }
+
   scene.remove(planeReplyAudio)
   // Set Reward Animation repeat every 2 second
   // Level Ended Sound
   // LevelCompleteSound('../Sounds/Global_Music/GL_A_8.mp3')
   // LevelCompleteSound('../Sounds/Global_Music/GL_A_5.mp3') // active
   LevelCompleteSound(Audio_GL_A_5) // active
+  LevelCompleteSound2(Audio_Level_Complete)
 
   // setInterval(() => {
   //   RewardShow()

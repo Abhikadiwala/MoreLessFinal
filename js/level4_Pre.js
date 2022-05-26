@@ -2615,6 +2615,7 @@ function dotAnimation() {
 
 // Load Instructor-1
 function presentationOne() {
+  isSlide3Active = true
   console.clear()
 
 
@@ -2684,6 +2685,7 @@ function presentationOne() {
 
 // Function for Render Instructor Slide-2
 function presentationTwo() {
+  isSlide3Active = true
 
   scene.remove(dot, dot2, dot3)
 
@@ -3681,6 +3683,7 @@ function init() {
     headerReward()
     // replyAudio()
     RewardPoints(getRewardData)
+    replyAudio()
   }
 
 

@@ -1376,7 +1376,22 @@ function playAudio(path) {
                         // insTwoLoad = false
                         // ins2Hide = true
                         setTimeout(() => {
+                            playAudio(Audio3)
+                            InsStart()
+                            // introMore()
+                        }, 200);
+                        // playAudio("../Sounds/level0_sounds/ML_A_L0_4.mp3")
+                        break;
+                    case Audio3:
+                        // console.log("Second end");
+                        // insTwoLoad = false
+                        // ins2Hide = true
+                        setTimeout(() => {
+                            // playAudio(Audio3)
+                            // playAudio(Audio4)
+                            playAudio(Audio4)
                             introMore()
+                            // InsStart()
                         }, 200);
                         // playAudio("../Sounds/level0_sounds/ML_A_L0_4.mp3")
                         break;
@@ -1529,6 +1544,15 @@ function soundBG(path) {
 
 // All Header Components Add Here
 // Home Button Function
+// alert("update position call")
+
+
+// var cameraOrtho = new THREE.OrthographicCamera(- width / 2, width / 2, height / 2, - height / 2, 1, 10);
+// cameraOrtho.position.z = 10;
+
+// var sceneOrtho = new THREE.Scene();
+// renderer.render(sceneOrtho, cameraOrtho);
+
 function headerHome() {
     // console.log("Function headerHome");
     const hHome = new THREE.TextureLoader();
@@ -1547,9 +1571,23 @@ function headerHome() {
             var planeGeometryHome = new THREE.PlaneBufferGeometry(0.37, 0.33);
             planeHome = new THREE.Mesh(planeGeometryHome, planeMaterialHome);
             scene.add(planeHome);
+            // alert("-----------")
+            // sceneOrtho.add(planeHome);
             // planeHome.position.x = -2.8
             // planeHome.position.y = 1.5
             // planeHome.position.z = 1
+
+            // // --------------------------------------------------------------
+            // // Testing
+            // planeHome.center.set(0.0, 1.0);
+            // // function positionUpdate() {
+            // // alert("update position call")
+            // const width = window.innerWidth / 2;
+            // const height = window.innerHeight / 2;
+            // planeHome.position.set(- width, height, 1); // top left
+            // // }
+            // // positionUpdate()
+            // // --------------------------------------------------------------
 
             planeHome.position.x = PHomeX
             planeHome.position.y = PHomeY
@@ -1620,6 +1658,7 @@ function headerHome() {
 
             //Render the scene
             renderer.render(scene, camera);
+            // renderer.render(sceneOrtho, cameraOrtho);
             document.body.appendChild(renderer.domElement);
         },
         // undefined,
@@ -3181,9 +3220,10 @@ function presentationTwo() {
     // }
 }
 
-// Function for Introduction of More
-// Object Size Change
-function introMore() {
+// Identifiy This group function
+// InsStart:- Instruction start
+function InsStart() {
+
     // console.clear()// active
 
     isDotShow = false
@@ -3191,7 +3231,119 @@ function introMore() {
     scene.remove(dot, dot2, dot3)
     // console.log("planeInsL0_2.visible ", planeInsL0_2.visible);
     // Audio Indicating More
-    playAudio(s1sound)
+    // playAudio(s1sound)
+    if (planeInsL0_2.visible) {
+        // console.log("Is Visible");
+        planeInsL0_2.visible = false
+    }
+
+    //  ------------------------  Working  --------------------------
+    // Inner Function Change Image onClick         
+    const introMoreloadLHS = new THREE.TextureLoader();
+    introMoreloadLHS.load(
+        // "../asset/Set.png",
+        s1lhs,
+
+        // S3LHS,
+
+        //   "../asset/test.jpeg",
+        //  "../asset/Image place holder.png",
+        function (textureintroMoreLHS) {
+            var planeMaterialintroMoreLHS = new THREE.MeshBasicMaterial({
+                map: textureintroMoreLHS,
+                transparent: true,
+                // visible: false 
+            });
+            // textureintroMoreLHS.wrapS = THREE.RepeatWrapping;
+            // textureintroMoreLHS.wrapT = THREE.RepeatWrapping;
+            // textureLHS.repeat.set( 4, 4 );
+
+            //Create a 2x2 plane with texture
+            var planeGeometryintroMoreLHS = new THREE.PlaneBufferGeometry(2.5, 2.5);
+            planeintroMoreLHS = new THREE.Mesh(planeGeometryintroMoreLHS, planeMaterialintroMoreLHS);
+            scene.add(planeintroMoreLHS);
+            planeintroMoreLHS.position.x = SXIPosLHS
+            planeintroMoreLHS.position.y = SYIPosLHS
+
+            // // OnClick Event For planeLHS
+            // const domEventsInnerLHS = new THREEx.DomEvents(camera, renderer.domElement)
+            // domEventsInnerLHS.addEventListener(planeInnerLHS, 'click', function (event) {
+            //     console.log("planeInnerLHS clicked")
+            //     // alert("btn clicked")
+            // }, false)
+
+            //Render the scene
+            renderer.render(scene, camera);
+            document.body.appendChild(renderer.domElement);
+        },
+        // undefined,
+        function (err) {
+            console.error('An error happened in LHS Image.');
+        }
+    );
+
+    //  ------------------------  Working  --------------------------
+    // RHS Inner Function Change Image onClick
+    //  var meshRHS;         
+    const introMoreloadRHS = new THREE.TextureLoader();
+    introMoreloadRHS.load(
+        // 2nd URL
+        s1rhs,
+
+
+        function (textureintroMoreRHS) {
+            var planeMaterialintroMoreRHS = new THREE.MeshBasicMaterial({
+                map: textureintroMoreRHS,
+                transparent: true,
+                // visible: false 
+            });
+            // textureintroMoreRHS.wrapS = THREE.RepeatWrapping;
+            // textureintroMoreRHS.wrapT = THREE.RepeatWrapping;
+            // textureLHS.repeat.set( 4, 4 );
+
+            //Create a 2x2 plane with texture
+            var planeGeometryintroMoreRHS = new THREE.PlaneBufferGeometry(2.5, 2.5);
+            planeintroMoreRHS = new THREE.Mesh(planeGeometryintroMoreRHS, planeMaterialintroMoreRHS);
+            scene.add(planeintroMoreRHS);
+            planeintroMoreRHS.position.x = SXIPosRHS
+            planeintroMoreRHS.position.y = SYIPosRHS
+            // // OnClick Event For planeLHS
+            // const domEventsInnerLHS = new THREEx.DomEvents(camera, renderer.domElement)
+            // domEventsInnerLHS.addEventListener(planeInnerLHS, 'click', function (event) {
+            //     console.log("planeInnerLHS clicked")
+            //     // alert("btn clicked")
+            // }, false)
+
+            //Render the scene
+            renderer.render(scene, camera);
+            document.body.appendChild(renderer.domElement);
+        },
+        // undefined,
+        function (err) {
+            console.error('An error happened in RHS Image.');
+        }
+    );
+
+    //Render the scene
+    renderer.render(scene, camera);
+    document.body.appendChild(renderer.domElement);
+
+
+}
+
+
+// Function for Introduction of More
+// Object Size Change
+function introMore() {
+    // console.clear()// active
+
+    isDotShow = false
+    // scene.remove(dotMaterial, dotMaterial2, dotMaterial3)
+    // scene.remove(dot, dot2, dot3)
+    scene.remove(planeintroMoreLHS, planeintroMoreRHS)
+    // console.log("planeInsL0_2.visible ", planeInsL0_2.visible);
+    // Audio Indicating More
+    // playAudio(s1sound)
     if (planeInsL0_2.visible) {
         // console.log("Is Visible");
         planeInsL0_2.visible = false
@@ -3332,6 +3484,7 @@ function introMore() {
 // Object Size Change 
 function introLess() {
     console.clear()
+
     // console.log("planeintroMoreLHS Status:- ", planeintroMoreLHS.visible);
     // Audio Indicating Less
     playAudio(s2sound)

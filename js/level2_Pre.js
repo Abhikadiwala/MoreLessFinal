@@ -1682,15 +1682,24 @@ function headerHint() {
         domEvents.addEventListener(planeHint, 'click', function (event) {
           console.log("Hint Active Button Click")
 
+          // store hint click in session
+          // sessionStorage.setItem('hintClick', 1)
+          sessionStorage.setItem('hintClick', 2)
+
+
           // window.location.href = '/level2_Pre.html'
           var currentPath = `${endPoint}/level2_Pre.html`
 
           if (currentPath == `${endPoint}/level2_Pre.html`) {
             console.log("Redirect New Page");
             console.log("endPoint", endPoint);
-            location.href = 'level2_Pre.html'
+            // location.href = 'level2_Pre.html' // active
+            // location.href = 'hintBtnPage.html'
+            window.location.replace(`hintBtnPage.html`);
           } else {
-            location.href = 'level2_Pre.html'
+            // location.href = 'level2_Pre.html'
+            // location.href = 'hintBtnPage.html'
+            window.location.replace(`hintBtnPage.html`);
           }
         })
       }
@@ -2325,6 +2334,7 @@ function dotAnimation() {
 
 // Load Instructor-1
 function presentationOne() {
+  isFunc4Active = true
 
   // Load Instructor-1 At Center 
   const loadInsL0_1 = new THREE.TextureLoader();
@@ -2396,6 +2406,8 @@ function presentationOne() {
 
 // Function for Render Instructor Slide-2
 function presentationTwo() {
+  isFunc4Active = true
+
   scene.remove(dot, dot2, dot3)
 
   // ---------------------------------------------------------------------- 
@@ -3452,7 +3464,11 @@ function l2PS6_Skip() {
         // Play try Again Audio - incorrect
         // playAudio('../Sounds/tryAgain.mp3')
         // window.location.href = '/level2.html'
-        var setItemLocal = localStorage.setItem('level2_Pre', true)
+        localStorage.setItem('level2_Pre', true)
+
+        // store hint click in session
+        // sessionStorage.setItem('skipClick', 1)
+        sessionStorage.setItem('hintClick', 2)
 
         var currentPath = `${endPoint}/level2_Pre.html`
 
@@ -3461,12 +3477,14 @@ function l2PS6_Skip() {
           console.log("endPoint", endPoint);
           // location.href = '/level2.html'
           // window.location.replace(`${endPoint}/level2.html`);
-          window.location.replace(`level2.html`);
+          // window.location.replace(`level2.html`); // active
+          window.location.replace(`hintBtnPage.html`);
 
         } else {
           // location.href = '/level2.html'
           // window.location.replace(`${endPoint}/level2.html`);
-          window.location.replace(`level2.html`);
+          // window.location.replace(`level2.html`);
+          window.location.replace(`hintBtnPage.html`);
 
         }
 
@@ -3565,6 +3583,7 @@ function init() {
     headerReward()
     // replyAudio()
     RewardPoints(getRewardData)
+    replyAudio()
   }
 
   // ------------------       working       ---------------------------------

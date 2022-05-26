@@ -380,6 +380,8 @@ var BGSound = 'Sounds/level0_sounds/backgroud_music_free.mp3'
 
 var Audio_GL_3 = 'Sounds/Global_Music/GL_A_3.mp3'
 
+var Audio_Level_Complete = 'Sounds/Global_Music/Level Completion Audio.mp3'
+
 var AudioMore = 'Sounds/level4_sounds/ML_A_L4_4.mp3'
 var AudioLess = 'Sounds/level4_sounds/ML_A_L4_3.mp3'
 
@@ -1517,6 +1519,32 @@ function LevelCompleteSound(path) {
 
   }, false);
 }
+
+
+// For Level Complete Audio
+// Play Reply Audio and Pause playAudio Function sound here
+function LevelCompleteSound2(path) {
+
+  // Audio Listener Object
+  // var listener3 = new THREE.AudioListener();
+  var listener4 = new THREE.AudioListener();
+
+  // create the PositionalAudio object (passing in the listener)
+  // var replyAudioSound = new THREE.PositionalAudio(listener3);
+  var replyAudioSound2 = new THREE.PositionalAudio(listener4);
+
+  // load a sound and set it as the PositionalAudio object's buffer
+  // var audioLoader3 = new THREE.AudioLoader();
+  var audioLoader4 = new THREE.AudioLoader();
+  audioLoader4.load(path, function (buffer) {
+
+    replyAudioSound2.setBuffer(buffer);
+    replyAudioSound2.setRefDistance(20);
+    replyAudioSound2.play();
+
+  }, false);
+}
+
 
 // Pause BG Audio Here
 function soundBG(path) {
@@ -5656,6 +5684,7 @@ function levelFourComplete() {
 
   // LevelCompleteSound('../Sounds/Global_Music/GL_A_3.mp3')
   LevelCompleteSound(Audio_GL_3)
+  LevelCompleteSound2(Audio_Level_Complete)
 
   scene.remove(planeText)
   // level4Complete = true

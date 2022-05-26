@@ -1674,15 +1674,21 @@ function headerHint() {
                 domEvents.addEventListener(planeHint, 'click', function (event) {
                     console.log("Hint Active Button Click")
 
+                    // store hint click in session
+                    // sessionStorage.setItem('skipClick', 1)
+                    sessionStorage.setItem('hintClick', 1)
+
                     // window.location.href = '/level1_Pre.html'
                     var currentPath = `${endPoint}/level1_Pre.html`
 
                     if (currentPath == `${endPoint}/level1_Pre.html`) {
                         console.log("Redirect New Page");
                         console.log("endPoint", endPoint);
-                        location.href = 'level1_Pre.html'
+                        // location.href = 'level1_Pre.html' // active
+                        location.href = 'hintBtnPage.html'
                     } else {
-                        location.href = 'level1_Pre.html'
+                        // location.href = 'level1_Pre.html' // active
+                        location.href = 'hintBtnPage.html'
                     }
                 })
             }
@@ -2311,6 +2317,7 @@ function dotAnimation() {
 
 // Load Instructor-1
 function presentationOne() {
+    isFunc4Active = true
     // Load Instructor-1 At Center 
     // if (isDotShow == true) {
     const loadInsL0_1 = new THREE.TextureLoader();
@@ -2389,6 +2396,7 @@ function presentationOne() {
 // Function for Render Instructor Slide-2
 // function renderInsTwo() {
 function presentationTwo() {
+    isFunc4Active = true
 
     scene.remove(dot, dot2, dot3)
 
@@ -3412,6 +3420,10 @@ function l1PS6_Skip() {
                 // window.location.href = '/level1.html'
                 localStorage.setItem('level1_Pre', true)
 
+                // store hint click in session
+                // sessionStorage.setItem('skipClick', 1)
+                sessionStorage.setItem('hintClick', 1)
+
                 var currentPath = `${endPoint}/level1_Pre.html`
 
                 if (currentPath == `${endPoint}/level1_Pre.html`) {
@@ -3419,10 +3431,12 @@ function l1PS6_Skip() {
                     console.log("endPoint", endPoint);
                     // location.href = '/level1.html'
                     // window.location.replace(`${endPoint}/level1.html`); // active
-                    window.location.replace(`level1.html`); // active
+                    // window.location.replace(`level1.html`); // active
+                    window.location.replace(`hintBtnPage.html`);
                 } else {
                     // location.href = '/level1.html'
-                    window.location.replace(`level1.html`);
+                    // window.location.replace(`level1.html`);
+                    window.location.replace(`hintBtnPage.html`);
                 }
 
             }, false)
@@ -3521,6 +3535,7 @@ function init() {
         headerReward()
         // replyAudio()
         RewardPoints(getRewardData)
+        replyAudio()
     }
 
 
